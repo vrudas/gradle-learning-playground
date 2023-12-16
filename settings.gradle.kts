@@ -3,3 +3,6 @@ plugins {
 }
 
 rootProject.name = "gradle-learning-playground"
+
+include("theory")
+include("practice")
