@@ -7,3 +7,4 @@ rootProject.name = "gradle-learning-playground"
 include("theory")
 include("theory:hello-world")
 include("practice")
+include("theory:gradle-properties")
