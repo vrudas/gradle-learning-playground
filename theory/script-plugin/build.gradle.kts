@@ -1,0 +1,1 @@
+apply("archiving.gradle.kts")
