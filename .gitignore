@@ -24,3 +24,5 @@ gradle-app.setting
 .idea/
 !/.idea/icon.png
 *.iml
+
+**/dev/vrudas/glp/cipher/generated/model/*
