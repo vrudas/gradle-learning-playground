@@ -19,8 +19,8 @@ publishing {
             url = uri("https://repsy.io/mvn/vrudas/j4w-13-packages/")
 
             credentials {
-                username = System.getenv("USERNAME") ?: providers.gradleProperty("username").get()
-                password = System.getenv("PASSWORD") ?: providers.gradleProperty("password").get()
+                username = System.getenv("REPO_USERNAME") ?: providers.gradleProperty("username").get()
+                password = System.getenv("REPO_PASSWORD") ?: providers.gradleProperty("password").get()
             }
         }
     }

@@ -29,11 +29,11 @@ jobs:
           echo "$USERNAME"
           echo "$PASSWORD"
         env:
-          USERNAME: ${{ env.USERNAME }}
-          PASSWORD: ${{ secrets.PASSWORD }}
+          REPO_USERNAME: ${{ env.USERNAME }}
+          REPO_PASSWORD: ${{ secrets.PASSWORD }}
 
       - name: Publish dependency
         run: ./gradlew :practice:open-api-generation:publish
         env:
-          USERNAME: ${{ env.USERNAME }}
-          PASSWORD: ${{ secrets.PASSWORD }}
+          REPO_USERNAME: ${{ env.USERNAME }}
+          REPO_PASSWORD: ${{ secrets.PASSWORD }}
