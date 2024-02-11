@@ -22,6 +22,6 @@ jobs:
 
       - name: Execute gradle assemble
         run: ./gradlew assemble
-        with:
+        env:
           REPO_USERNAME: ${{ vars.USERNAME }}
           REPO_PASSWORD: ${{ secrets.PASSWORD }}

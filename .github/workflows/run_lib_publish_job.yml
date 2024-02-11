@@ -28,12 +28,12 @@ jobs:
         run: |
           echo "$REPO_USERNAME"
           echo "$REPO_PASSWORD"
-        with:
+        env:
           REPO_USERNAME: ${{ vars.USERNAME }}
           REPO_PASSWORD: ${{ secrets.PASSWORD }}
 
       - name: Publish dependency
         run: ./gradlew :practice:open-api-generation:publish
-        with:
+        env:
           REPO_USERNAME: ${{ vars.USERNAME }}
           REPO_PASSWORD: ${{ secrets.PASSWORD }}
