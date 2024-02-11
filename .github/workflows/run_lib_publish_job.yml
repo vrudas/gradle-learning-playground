@@ -1,0 +1,39 @@
+name: Publish test dependency
+
+on:
+  workflow_call:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Prepare to publish
+        uses: gradle/gradle-build-action@v2
+
+      - name: Print Repsy credentials
+        run: |
+          echo "$USERNAME"
+          echo "$PASSWORD"
+        env:
+          USERNAME: ${{ env.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+
+      - name: Publish dependency
+        run: ./gradlew :practice:open-api-generation:publish
+        env:
+          USERNAME: ${{ env.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}

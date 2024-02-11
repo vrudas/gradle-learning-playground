@@ -1,0 +1,18 @@
+name: Java CI
+
+run-name: Running default CI-checks for code pushed by ${{ github.actor }}
+
+permissions: write-all
+
+on:
+  push:
+
+jobs:
+  build:
+    name: Build
+    uses: ./.github/workflows/run_build_job.yml
+
+  publish:
+    needs: build
+    name: Publish
+    uses: ./.github/workflows/run_lib_publish_job.yml
