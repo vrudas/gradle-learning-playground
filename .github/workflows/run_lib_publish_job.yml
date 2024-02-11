@@ -26,14 +26,14 @@ jobs:
 
       - name: Print Repsy credentials
         run: |
-          echo "$USERNAME"
-          echo "$PASSWORD"
+          echo "$REPO_USERNAME"
+          echo "$REPO_PASSWORD"
         env:
-          REPO_USERNAME: ${{ env.USERNAME }}
+          REPO_USERNAME: ${{ vars.USERNAME }}
           REPO_PASSWORD: ${{ secrets.PASSWORD }}
 
       - name: Publish dependency
         run: ./gradlew :practice:open-api-generation:publish
         env:
-          REPO_USERNAME: ${{ env.USERNAME }}
+          REPO_USERNAME: ${{ vars.USERNAME }}
           REPO_PASSWORD: ${{ secrets.PASSWORD }}
