@@ -1,5 +1,5 @@
 plugins {
-    java
+    `java-library`
     idea
     id("org.openapi.generator") version "7.2.0"
     `maven-publish`
@@ -26,12 +26,21 @@ publishing {
     }
 
     publications {
-        create<MavenPublication>("test-gh-packages-publish") {
+        create<MavenPublication>("cipher-dtos") {
             groupId = project.group as String
-            artifactId = project.name
+            artifactId = "cipher-dtos"
             version = project.version as String
 
             from(components["java"])
+
+            pom {
+                name.set("cipher-dtos")
+                description.set("Cipher DTOs library generated from OpenAPI spec")
+
+                licenses { license { name.set("MIT") } }
+
+                developers { developer { name.set("Vasyl Rudas") } }
+            }
         }
     }
 }
