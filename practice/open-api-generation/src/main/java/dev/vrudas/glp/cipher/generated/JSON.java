@@ -1,4 +1,4 @@
-package dev.vrudas.glp.ciphers;
+package dev.vrudas.glp.cipher.generated;
 
 import com.google.gson.Gson;
 

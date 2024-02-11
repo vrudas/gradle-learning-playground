@@ -23,7 +23,7 @@ openApiGenerate {
     inputSpec = layout.projectDirectory.file("src/main/resources/openapi.yaml").asFile.path
     outputDir = layout.projectDirectory.asFile.path
 
-    modelPackage.set("dev.vrudas.glp.ciphers.models")
+    modelPackage.set("dev.vrudas.glp.cipher.generated.model")
 
     generateModelTests.set(false)
     generateModelDocumentation.set(false)
