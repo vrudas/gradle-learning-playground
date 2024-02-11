@@ -2,10 +2,38 @@ plugins {
     java
     idea
     id("org.openapi.generator") version "7.2.0"
+    `maven-publish`
 }
 
 repositories {
     mavenCentral()
+}
+
+group = "dev.vrudas.glp"
+version = "0.0.1-SNAPSHOT"
+
+publishing {
+    repositories {
+        maven {
+            name = "repsy-j4w-13-packages-repo"
+            url = uri("https://repsy.io/mvn/vrudas/j4w-13-packages/")
+
+            credentials {
+                username = System.getenv("USERNAME") ?: providers.gradleProperty("username").get()
+                password = System.getenv("PASSWORD") ?: providers.gradleProperty("password").get()
+            }
+        }
+    }
+
+    publications {
+        create<MavenPublication>("test-gh-packages-publish") {
+            groupId = project.group as String
+            artifactId = project.name
+            version = project.version as String
+
+            from(components["java"])
+        }
+    }
 }
 
 val javaxVersion = "1.3.2"
@@ -36,5 +64,9 @@ openApiGenerate {
 }
 
 tasks.compileJava {
+    dependsOn(tasks.openApiGenerate)
+}
+
+tasks.processResources {
     dependsOn(tasks.openApiGenerate)
 }
