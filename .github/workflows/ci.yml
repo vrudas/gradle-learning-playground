@@ -11,8 +11,10 @@ jobs:
   build:
     name: Build
     uses: ./.github/workflows/run_build_job.yml
+    secrets: inherit
 
   publish:
     needs: build
     name: Publish
     uses: ./.github/workflows/run_lib_publish_job.yml
+    secrets: inherit
